@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My first jQuery project</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="header"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-xs-12">
+            <form class="form-inline">
+                <div class="form-group">
+                    <select id="continents" class="form-control input-lg" onChange=" hideCities(); hideCountries(); loadCountries(this);">
+                        <option value="dummy">---Select Continent---</option>
+                        <option value="africa">Africa</option>
+                        <option value="americas">Americas</option>
+                        <option value="asia">Asia</option>
+                        <option value="oceania">Oceania</option>
+                        <option value="europe">Europe</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="countries" class="form-control input-lg" onChange=" hideCities(); loadCities(this);" style="display: none">
+                        <option value="dummy"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="cities" class="form-control input-lg" onChange="loadForecastAndWeather(this)" style="display: none">
+                        <option value="dummy"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select id="forecastHistory" class="form-control input-lg" onChange="loadHistory(this)" style="display: none">
+                        <option value="dummy" selected>--Select --</option>
+                        <option value="humidity">Humidity</option>
+                        <option value="pressure">Pressure</option>
+                        <option value="temp.max">Temperature</option>
+                        <option value="speed">Wind Speed</option>
+
+                    </select>
+                </div>
+            </form>
+        </div>
+    </div>
+        <h3 >City Weather</h3>
+    <div class="row">
+        <div class="col-md-4">
+        <div class="table-responsive">
+            <table class="table table-hover" id="forecastInfo">
+                <tbody>
+                <tr>
+                    <td id="icon" colspan="2" align="center"></td>
+                </tr>
+                <tr>
+                    <td>Temperature:</td>
+                    <td  id="temp"></td>
+                </tr>
+                <tr>
+                    <td >Weather Description:</td>
+                    <td id="description"></td>
+                </tr>
+                <tr>
+                    <td >Humidity:</td>
+                    <td id="humidity"></td>
+                </tr>
+                <tr>
+                    <td >Sunrise at:</td>
+                    <td id="sunrise"></td>
+                </tr>
+                <tr>
+                    <td >Sunset at:</td>
+                    <td id="sunset"></td>
+                </tr>
+                <tr>
+                    <td >Wind speed:</td>
+                    <td id="wind"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div id="curve_chart"></div>
+    </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/index.js" type="text/javascript"></script>
+<script type="text/javascript"
+        src="https://www.google.com/jsapi?autoload={
+            'modules':[{
+              'name':'visualization',
+              'version':'1',
+              'packages':['corechart']
+            }]
+          }"></script>
+
+
+</body>
+</html>
